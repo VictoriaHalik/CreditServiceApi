@@ -22,6 +22,7 @@ public class Credit {
     @NotNull
     @JsonView(Views.CreditInfo.class)
     private Long sumTake;
+
     @NotNull
     @JsonView(Views.CreditInfo.class)
     private int periodMonths;
