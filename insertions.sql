@@ -1,0 +1,1 @@
+ insert into users(user_id, age, email_address, first_name, last_name, password, username, roles_id) values (3, 25, 'admin@gmail.com', 'a', '1', 'admin', 'admin', 2);

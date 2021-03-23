@@ -1,5 +1,6 @@
-package com.example.CreditServiceApi.domain;
+package com.example.CreditServiceApi.domain.mainEntity;
 
+import com.example.CreditServiceApi.domain.Views;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.OnDelete;
@@ -47,6 +48,7 @@ public class Credit {
     @JsonView(Views.CreditInfo.class)
     private LocalDateTime startDate;
 
+    @JsonView(Views.CreditInfo.class)
     private LocalDateTime finishDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -54,6 +56,7 @@ public class Credit {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonView(Views.CreditInfo.class)
     private User userOwner;
+
 
     public User getUserOwner() {
         return userOwner;
@@ -123,8 +126,8 @@ public class Credit {
         return sumPay;
     }
 
-    public void setSumPay(Long sumPay) {
-        this.sumPay = sumPay;
+    public void setSumPay() {
+        this.sumPay = ((Credit.percent + 100) * this.sumTake)/100;
     }
 
     public int getPeriodMonths() {

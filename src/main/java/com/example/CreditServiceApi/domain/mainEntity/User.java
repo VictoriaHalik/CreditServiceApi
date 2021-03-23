@@ -1,5 +1,7 @@
-package com.example.CreditServiceApi.domain;
+package com.example.CreditServiceApi.domain.mainEntity;
 
+import com.example.CreditServiceApi.domain.additionalEntity.Role;
+import com.example.CreditServiceApi.domain.Views;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.ToString;
 import javax.persistence.*;
@@ -19,6 +21,7 @@ public class User {
     private Long userId;
 
     @NotNull
+    @JsonView(Views.UserInfo.class)
     private String username;
 
     @NotNull
@@ -42,6 +45,21 @@ public class User {
 
     @NotNull
     private String password;
+
+    @ManyToOne
+    @JsonView(Views.UserInfo.class)
+    @JoinColumn(name = "roles_id")
+    private Role role;
+
+
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getUsername() {
         return username;

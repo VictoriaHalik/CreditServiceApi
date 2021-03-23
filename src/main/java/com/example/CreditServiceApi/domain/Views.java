@@ -6,4 +6,6 @@ public final class Views {
     public interface CreditInfo {}
 
     public interface UserInfo {}
+
+    public interface BudgetInfo {}
 }
